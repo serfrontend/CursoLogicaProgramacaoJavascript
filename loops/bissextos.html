@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Anos bissextos</h1>
+
+    <p>Para saber se um ano é bissexto existe uma regra básica: os anos bissextos são aqueles múltiplos de 4, ou seja, a
+        cada quatro anos temos um ano bissexto. Por outro lado, esses anos não são múltiplos de 100 (por exemplo,1800,
+        1900, 2100), exceto os múltiplos de 400 (por exemplo, 1600, 2000, 2400).</p>
+
+    <script>
+
+
+
+
+        for (let ano = 1004; ano <= 2024; ano += 4) {
+
+            let anoBissexto = ano % 100 != 0 || ano % 400 === 0
+
+            if (anoBissexto) {
+                console.log(ano, "é ano bissexto")
+            } else {
+                console.log(ano, "não é ano bissexto")
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

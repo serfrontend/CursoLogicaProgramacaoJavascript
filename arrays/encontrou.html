@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Arrays</h1>
+
+    <script>
+
+        const numeros = [2, "<sds>", 5, 6, 2, 1, 0, 9]
+        let encontrou = false
+
+        for (let i = 0; i < numeros.length; i++) {
+            let n = numeros[i]
+            if (n === null || n === undefined || isNaN(n)) {
+                encontrou = true
+                break
+            }
+        }
+
+        alert("Encontrou null, undefined ou NaN? " + encontrou)
+
+
+    </script>
+</body>
+
+</html>

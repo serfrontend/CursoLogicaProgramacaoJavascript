@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios</title>
+</head>
+
+<body>
+
+    <script>
+
+        function somar(n1, n2) {
+            return n1 + n2
+        }
+        // console.log(somar(2, 4))
+        let resultado = somar(2, 4)
+        console.log(resultado)
+
+        function calcular(n1, n2, simbolo) {
+            switch (simbolo) {
+                case "+":
+                    return n1 + n2
+                case "-":
+                    return n1 - n2
+                case "*":
+                    return n1 * n2
+                case "/":
+                    return n1 / n2
+                default:
+                    return null
+            }
+        }
+
+        console.log(calcular(2, 4, "+"))
+        console.log(calcular(5, 2, "-"))
+        console.log(calcular(5, 2, "*"))
+        console.log(calcular(5, 2, "/"))
+        console.log(calcular(5, 2, "a"))
+
+
+        function ehPar(n) {
+            return n % 2 === 0
+        }
+
+        console.log(ehPar(5)) // console.log(false)
+        console.log(ehPar(4)) // console.log(true)
+
+        function ehBissexto(ano) {
+            return ano % 4 === 0 && (ano % 100 !== 0 || ano % 400 === 0)
+        }
+
+        console.log(ehBissexto(2000))
+        console.log(ehBissexto(1800))
+
+    </script>
+</body>
+
+</html>

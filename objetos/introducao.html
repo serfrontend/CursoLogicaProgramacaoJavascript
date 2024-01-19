@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+
+<body>
+    <h1>Objetos</h1>
+
+    <script>
+
+        //Problema 1
+        const caneta = {
+            nome: "caneta",
+            preco: 2,
+            quantidade: 5
+        }
+
+        document.write(caneta.nome + " custa R$" + caneta.preco + " e há " + caneta.quantidade + " unidades em estoque <br>")
+        document.write(`${caneta.nome} custa R$${caneta.preco} e há ${caneta.quantidade} unidades em estoque <br>`)
+
+
+        // Problema 2
+        const carro = {
+            modelo: "Uno",
+            ano: 2023,
+            km: 10000,
+            combustivel: "gasolina",
+            litrosConsumidos: 625
+        }
+
+        document.write(` O carro ${carro.modelo} ano ${carro.ano} fez em média ${carro.km / carro.litrosConsumidos} Km/L de ${carro.combustivel} `)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>break vs continue</h1>
+
+    <script>
+
+
+        let quantasVezesDadosJogados = 0
+        let quantasVezesASomaEhPar = 0
+
+        while (true) {
+            let dado1 = parseInt(Math.random() * 6) + 1
+            let dado2 = parseInt(Math.random() * 6) + 1
+            console.log(dado1, dado2, quantasVezesDadosJogados, quantasVezesASomaEhPar)
+
+            if (dado1 === dado2) {
+                continue
+            }
+
+            quantasVezesDadosJogados++
+
+            if ((dado1 + dado2) % 2 === 0) {
+                quantasVezesASomaEhPar++
+            }
+
+            if (quantasVezesASomaEhPar >= 10) {
+                break
+            }
+
+        }
+        console.log("Os dados foram jogados " + quantasVezesDadosJogados + " vezes")
+
+
+    </script>
+</body>
+
+</html>

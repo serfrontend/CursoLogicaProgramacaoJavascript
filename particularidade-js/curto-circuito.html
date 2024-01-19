@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos primitivos</title>
+</head>
+
+<body>
+    <h1>Curto-circuito</h1>
+
+
+
+    <script>
+
+        let n = 20
+
+        n = n && 10
+
+
+
+        n = n.toString(16)
+        console.log(n, typeof n)
+        n = 10
+
+        n = n.toString(2)
+
+        console.log(n, typeof n)
+
+        function teste(param) {
+            param = param !== undefined ? param : 10
+
+            console.log(param)
+        }
+
+        teste()
+        teste(0)
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

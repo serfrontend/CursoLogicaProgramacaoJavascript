@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>break vs continue</h1>
+
+    <script>
+        for (let i = 1; i < 10; i++) {
+            console.log(i)
+            if (i === 5) {
+                break
+            }
+        }
+        console.log("fim do loop com break")
+
+        for (let i = 1; i < 10; i++) {
+            if (i === 5) {
+                continue
+            }
+            console.log(i)
+        }
+        console.log("fim do loop continue")
+
+        console.log("--------- loop while")
+
+        let x = 1;
+        while (x < 10) {
+            console.log(x)
+            if (x === 5) {
+                break
+            }
+            x++
+        }
+        console.log("fim do loop while com break")
+
+        x = 1;
+        while (x < 10) {
+            if (x === 5) {
+                x++
+                continue
+            }
+            console.log(x)
+            x++
+        }
+        console.log("fim do loop while com continue")
+
+    </script>
+</body>
+
+</html>
