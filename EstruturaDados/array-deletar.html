@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Inserir</title>
+</head>
+
+<body>
+
+    <script>
+
+        // remover do final
+        const arr = [1, 9, 0, 6, 9, 8, 7, 6]
+        arr.length = arr.length - 1
+        console.log(arr)
+
+        arr.pop()
+        console.log(arr)
+
+
+
+        //remover do inicio
+        const arr2 = [1, 9, 0, 6]
+
+        for (let i = 0; i < arr2.length; i++) {
+            arr2[i] = arr2[i + 1]
+        }
+        arr2.length = arr2.length - 1
+
+        console.log(arr2)
+
+        arr2.shift()
+        console.log(arr2)
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Recursividade</h1>
+
+    <p>Crie um função que receba dois parâmetros inteiros positivos. O primeiro será a razão da progressão geométrica e
+        o segundo parâmetro será o limite dessa sequência de números.</p>
+    <p>
+        Essa função deve retornar o último número da progressão geométrica de razão n que seja menor que o limite.
+    </p>
+
+    <script>
+        // PG - razão 2 - 2, 4, 8, 16, 32, 64, 128 
+        // PG - razao 3 - 3, 9, 27, 81, 243
+
+        //getPG(2, 35) - // 32
+        //getPG(3, 100) - // 81
+
+        function getPG(razao, limite, n = 1) {
+            console.log("getPG", n)
+            if (n * razao < limite) {
+                // return proximoPG(razao, limite, n)
+                return getPG(razao, limite, n * razao)
+            }
+            console.log("FIM getPG")
+            return n
+
+        }
+
+        // function proximoPG(razao, limite, n) {
+        //     n = n * razao
+        //     console.log("proximoPG", n)
+        //     return getPG(razao, limite, n)
+        // }
+
+        // console.log(getPG(2, 100)) // 64
+        console.log(getPG(3, 100)) // 81
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Recursividade</h1>
+
+
+
+    <script>
+
+        /*
+            !3 = 1 * 2 * 3 = 6
+            !4 = 1 * 2 * 3 * 4 = 24
+        */
+
+        let count1 = 0
+        function fatorial(n) {
+            let result = 1
+
+            for (let i = 2; i <= n; i++) {
+                count1++
+                result *= i
+            }
+            return result
+        }
+
+        console.log(fatorial(5))
+        console.log(count1)
+
+
+        let count2 = 0
+        function fatorial2(n) {
+            count2++
+            if (n < 2) {
+                return 1 // caso base. sai da recursividade
+            } else {
+                return n * fatorial2(n - 1)
+            }
+        }
+
+        console.log(fatorial2(5))
+        console.log(count2)
+
+    </script>
+</body>
+
+</html>

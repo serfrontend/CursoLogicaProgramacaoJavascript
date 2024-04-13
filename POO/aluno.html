@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+</head>
+
+<body>
+
+    <p>Crie uma classe Aluno que receba em sua função construtora o nome do aluno e o nome do curso
+    </p>
+    <p>
+        Adicione um método chamado informarNotas que receba 4 números e armazene em uma propriedade chamada notas
+    </p>
+    <p>
+        Adicione um método para calcular e mostrar a média do aluno
+    </p>
+
+    <script>
+        class Aluno {
+            constructor(nome, curso) {
+                this.nome = nome
+                this.curso = curso
+                this.notas = []
+            }
+
+            adicionarNotas(n1, n2, n3, n4) {
+                this.notas = [n1, n2, n3, n4]
+            }
+
+            #calcularMedia() {
+                const soma = this.notas[0] + this.notas[1] + this.notas[2] + this.notas[3]
+                const media = soma / 4
+                return media
+            }
+
+            mostrarMedia() {
+                if (this.notas.length === 0) {
+                    console.log(`${this.nome} do curso ${this.curso} não possui notas`)
+                    return
+                }
+                const media = this.#calcularMedia()
+                console.log(`O(a) aluno(a) ${this.nome} do curso ${this.curso} tem média ${media}`)
+            }
+        }
+
+        const daniel = new Aluno("Daniel", "Lógica de Programação")
+
+        daniel.adicionarNotas(3, 5, 7, 1)
+        daniel.mostrarMedia()
+        console.log(daniel)
+
+        const maria = new Aluno("Maria", "HTML")
+
+    </script>
+
+</body>
+
+</html>

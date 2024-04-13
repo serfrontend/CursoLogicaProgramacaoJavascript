@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort</title>
+</head>
+
+<body>
+
+    <h1>Selection Sort</h1>
+
+    <script>
+
+        let count = 0
+        function selectionSort(list) {
+            let length = list.length
+
+            for (let i = 0; i < length - 1; i++) {
+                let minIndex = i
+
+                for (let j = i + 1; j < length; j++) {
+                    if (list[j] < list[minIndex]) {
+                        minIndex = j
+                    }
+                    count++
+                }
+
+                if (minIndex !== i) {
+                    const temp = list[i]
+                    list[i] = list[minIndex]
+                    list[minIndex] = temp
+                }
+
+            }
+
+            return list
+        }
+
+        const arr = [6, 1, 2, 9, 0, 5, -4, 5, -2, -1]
+        selectionSort(arr)
+        console.log(arr)
+        console.log(count)
+
+        //BIG O NOTATION
+        // O(n^2)
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilha | Stack</title>
+</head>
+
+<body>
+
+    <script>
+        class Pilha { // Stack
+            constructor() {
+                this.pilha = []
+            }
+
+            // adicinar elemento na pilha 
+            adicionar(novoElemento) { // push()
+                this.pilha.push(novoElemento)
+            }
+
+            // remover elemento da pilha
+            remover() { // pop()
+                if (this.estaVazia()) {
+                    throw new Error("A pilha está vazia")
+                }
+                return this.pilha.pop()
+
+            }
+
+            // verificar se a pilha está vazia
+            estaVazia() { //isEmpty()
+                return this.pilha.length === 0
+            }
+
+            // espiar o elemento do topo da pilha
+            espiar() { // peek()
+                if (this.estaVazia()) {
+                    return null
+                }
+                return this.pilha[this.pilha.length - 1]
+            }
+
+            // limpar a pilha
+            limpar() { // clear()
+                this.pilha.length = 0
+            }
+
+            // obter o número de elementos da pilha
+            get tamanho() { // size()
+                return this.pilha.length
+            }
+        }
+
+        const minhaPilha = new Pilha()
+        console.log(minhaPilha.estaVazia()) // true
+        minhaPilha.adicionar(1)
+        minhaPilha.adicionar(2)
+        minhaPilha.adicionar(3)
+        console.log(minhaPilha.estaVazia()) // false
+        console.log(minhaPilha.espiar()) // 3
+        minhaPilha.remover()
+        minhaPilha.remover()
+        console.log(minhaPilha.espiar()) // 1
+        minhaPilha.remover()
+        console.log(minhaPilha.espiar()) // null
+        console.log(minhaPilha.estaVazia()) // true
+        console.log(minhaPilha.tamanho) // 0
+        minhaPilha.adicionar(4)
+        console.log(minhaPilha.tamanho) // 1
+        console.log(minhaPilha.estaVazia()) // false
+        minhaPilha.limpar()
+        console.log(minhaPilha.tamanho) // 0
+        console.log(minhaPilha.estaVazia()) // true
+
+
+
+
+    </script>
+</body>
+
+</html>

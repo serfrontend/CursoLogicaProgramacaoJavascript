@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas Hash</title>
+
+
+</head>
+
+<body>
+
+    <h1>Tabelas Hash</h1>
+
+
+    <script>
+
+        class HashNode {
+            constructor(key, value) {
+                this.key = key
+                this.value = value
+                this.next = null
+            }
+        }
+
+
+        class LinkedList {
+            #size
+            constructor() {
+                this.head = null
+                this.tail = null
+                this.#size = 0
+            }
+
+            append(key, value, replace) { // adiciona no final da lista
+
+                //primeiro, vamos verificar se a chave já existe
+                let current = this.head
+
+                while (current) {
+                    if (current.key === key) {
+                        if (replace) {
+                            current.value = value
+                        } else {
+                            throw Error("Chave já existe. Mude a chave ou passe true no terceiro parâmetro para substituir o valor da chave existente")
+                        }
+                        return false
+                    }
+                    current = current.next
+                }
+
+
+                const newNode = new HashNode(key, value)
+
+                if (this.head === null) { // estou adicionando o primeiro elemento da lista
+                    this.head = newNode
+                    this.tail = newNode
+                } else { // não é o primeiro elemento da lista
+                    const last = this.tail
+                    last.next = newNode
+                    this.tail = newNode
+                }
+                this.#size++
+                return true
+            }
+
+            getByKey(key) {
+                let current = this.head
+
+                while (current) {
+                    if (current.key === key) {
+                        return current.value
+                    }
+                    current = current.next
+                }
+                return undefined
+            }
+
+            remove(key) { // remover pela chave
+                let current = this.head
+                let prev = null
+
+                while (current) {
+                    if (current.key === key) {
+                        if (prev) {
+                            prev.next = current.next
+                            current.next = null
+                        } else {
+                            this.head = current.next
+                            current.next = null
+                        }
+                        this.#size--
+                        return true
+                    }
+                    prev = current
+                    current = current.next
+                }
+                return false
+            }
+
+            isEmpty() {
+                return this.head === null
+            }
+
+            get size() {
+                return this.#size
+            }
+
+            print() {
+                let current = this.head
+                let result = ""
+                while (current) {
+                    result += current.value + " --> "
+                    current = current.next
+                }
+
+                console.log(result + " --- Size: " + this.#size)
+
+            }
+        }
+
+        class HashTable {
+            #size
+            constructor(maxSize) {
+                this.#size = 0
+                this.table = []
+                this.max = maxSize
+            }
+
+            hash(key) {
+                let hashValue = 0
+                for (let i = 0; i < key.length; i++) {
+                    hashValue += key.charCodeAt(i)
+                }
+                return hashValue % this.max
+            }
+
+            insert(key, value, replace) {
+                const index = this.hash(key)
+
+                if (this.table[index] === undefined) {
+                    this.table[index] = new LinkedList()
+                }
+
+                const result = this.table[index].append(key, value, replace)
+                if (result) {
+                    this.#size++
+                }
+
+            }
+
+            get(key) {
+                const index = this.hash(key)
+
+                if (this.table[index] !== undefined) {
+                    //já temos uma linked list
+                    return this.table[index].getByKey(key)
+                }
+                return undefined
+
+            }
+
+            remove(key) {
+                const index = this.hash(key)
+
+                if (this.table[index] !== undefined) {
+                    //já temos uma linked list 
+                    const result = this.table[index].remove(key)
+
+                    if (result) {
+                        this.#size--
+                        if (this.table[index].isEmpty()) {
+                            this.table[index] = undefined
+                        }
+                    }
+                    return result
+
+                }
+
+                return false // chave nao encontrada
+
+            }
+        }
+
+        const table = new HashTable(97) // 97 é número primo e funciona melhor em tabelas hash
+        table.insert("daniel@serliv.com", "Daniel Morales")
+        console.log(table.get("daniel@serliv.com"))
+        table.insert("daniel@serliv.com", "Daniel Tapias Morales", true)
+        console.log(table.get("daniel@serliv.com"))
+        console.log(table.remove("daniel@serliv.com"))
+        console.log(table.remove("daniel@gmail.com"))
+        console.log(table.get("daniel@serliv.com"))
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

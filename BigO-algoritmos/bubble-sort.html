@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+</head>
+
+<body>
+
+    <h1>Bubble Sort</h1>
+
+    <script>
+
+        function bubbleSort(list) {
+            let length = list.length
+
+            for (let i = 0; i < length; i++) {
+
+                for (let j = 0; j < length - 1; j++) {
+                    console.log("i: ", i, " - j: ", j)
+                    if (list[j] > list[j + 1]) {
+                        const temp = list[j]
+                        list[j] = list[j + 1]
+                        list[j + 1] = temp
+                    }
+                }
+            }
+            return list
+
+
+        }
+
+        const arr = [6, 1, 2, 9, 0, 5, -4, 5, -2, -1]
+        bubbleSort(arr)
+        console.log(arr)
+
+
+    </script>
+
+</body>
+
+</html>

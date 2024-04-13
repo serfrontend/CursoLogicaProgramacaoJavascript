@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Callback</h1>
+
+
+
+    <script>
+
+        function executar(cb) {
+            console.log("executar chamado")
+            console.log(cb)
+            // console.log(cb())
+            console.log(typeof cb)
+
+            if (typeof cb === "function") {
+                const teste = cb("parametro passado para a funcao de callback")
+                console.log("---", teste, "---")
+            }
+        }
+
+        executar(function (x) {
+            console.log("funcao anonima executada")
+            console.log(x)
+            return "valor retornado da funcao de callback"
+        })
+
+
+        function teste(param) {
+            console.log("funcao teste executada recebendo param", param)
+            return "valor retornado da funcao teste"
+        }
+
+        executar(teste)
+        console.log("---------------------")
+        teste(1000)
+
+
+    </script>
+</body>
+
+</html>

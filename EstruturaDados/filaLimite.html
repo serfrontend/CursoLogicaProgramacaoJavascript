@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila | Queue</title>
+</head>
+
+<body>
+
+    <script>
+        class Fila { // Queue
+            constructor(tamanhoLimite) {
+                this.fila = [] //queue
+                this.limite = (tamanhoLimite && tamanhoLimite > 0) ? tamanhoLimite : null
+            }
+
+            // enfileirar um elemento na fila 
+            enfileirar(novoElemento) { // enqueue
+                if (this.estaCheia()) {
+                    throw new Error("A pilha está cheia")
+                }
+                this.fila.push(novoElemento)
+            }
+
+            // desenfileirar um elemento da fila
+            desenfileirar() { // dequeue
+                if (this.estaVazia()) {
+                    throw new Error("A fila está vazia")
+                }
+                return this.fila.shift()
+            }
+
+            // verificar se a fila está vazia
+            estaVazia() { // isEmpty
+                return this.fila.length === 0
+            }
+
+            //verifica se esta cheia
+            estaCheia() {
+                if (this.limite !== null) {
+                    return this.fila.length >= this.limite
+                }
+                return false
+
+            }
+
+            // espiar o primeiro elemento da fila
+            espiar() { // peek
+                return this.fila[0] || null
+            }
+
+            // limpar a fila
+            limpar() { // clear()
+                this.fila.length = 0
+            }
+
+            // obter o número de elementos da fila
+            get tamanho() { // size()
+                return this.fila.length
+            }
+        }
+
+        const minhaFila = new Fila(5)
+        console.log(minhaFila.estaVazia()) // true
+        minhaFila.enfileirar("Primeiro")
+        minhaFila.enfileirar("Segundo")
+        minhaFila.enfileirar("Terceiro")
+        console.log(minhaFila.espiar()) // Primeiro
+        console.log(minhaFila.desenfileirar()) // Primeiro
+        console.log(minhaFila.tamanho) // 2
+        console.log(minhaFila.estaVazia()) // false
+        minhaFila.limpar()
+        console.log(minhaFila.estaVazia()) // true
+        minhaFila.enfileirar("Primeiro")
+        minhaFila.enfileirar("Segundo")
+        minhaFila.enfileirar("Terceiro")
+        minhaFila.enfileirar("Quarto")
+        console.log(minhaFila.estaCheia()) // false
+        minhaFila.enfileirar("Quinto")
+        console.log(minhaFila.estaCheia()) // true
+        try {
+            minhaFila.enfileirar("Sexta")
+        } catch (e) {
+            console.log("ERRO: ", e.message)
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

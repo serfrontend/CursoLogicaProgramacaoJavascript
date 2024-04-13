@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Recursividade</h1>
+
+    <p>Crie um função que receba dois parâmetros inteiros positivos. O primeiro será a razão da progressão geométrica e
+        o segundo parâmetro será a quantidade de números que essa sequência deve ter.</p>
+    <p>
+        Essa função deve retornar o último número dessa progressão geométrica de razão n.
+    </p>
+
+    <script>
+        // PG - razão 2 - 2, 4, 8, 16, 32, 64, 128 
+        // PG - razao 3 - 3, 9, 27, 81, 243
+
+        //getPG(2, 5) - // 32
+        //getPG(3, 3) - // 27
+
+        let count1 = 0
+
+        function getPG(razao, posicao) {
+
+            let result = 1
+
+            for (let i = 1; i < posicao; i++) {
+                count1++
+                result *= razao
+            }
+            return result
+        }
+
+        console.log(getPG(2, 5))
+        console.log(count1)
+
+        let count2 = 0
+
+        function getPG2(razao, posicao) {
+            count2++
+            if (posicao === 1) {
+                console.log("posicao é 0")
+                return 1
+            }
+            console.log(" chamar a funcao getPG2 passando posicao = ", posicao - 1)
+            return razao * getPG2(razao, posicao - 1)
+        }
+
+        console.log(getPG2(2, 5))
+        console.log(count2)
+
+        console.log(getPG2(4, 6))
+
+
+    </script>
+</body>
+
+</html>

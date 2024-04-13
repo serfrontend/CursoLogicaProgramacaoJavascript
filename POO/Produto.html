@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+</head>
+
+<body>
+    <p>
+        Criar uma classe Produto que inicie sem itens em estoque.
+        A classe deve ter métodos públicos para remover itens do estoque (comprar(quantidade)) e para adicionar itens no
+        estoque (adicionarAoEstoque(quantidade)). Além disso, implementar um método privado
+        #removerDoEstoque(quantidade)
+        que será usado internamente para atualizar a quantidade do estoque sempre que comprar() for efetuado com
+        sucesso.
+        O acesso à quantidade em estoque deve ser restrito.
+    </p>
+
+
+    <script>
+        class Produto {
+            #estoque
+            constructor(nome) {
+                this.#estoque = 0
+                this.nome = nome
+            }
+
+            comprar(quantidade) {
+                if (quantidade < this.#estoque) {
+                    this.#removerDoEstoque(quantidade)
+                    console.log("O estoque de", this.nome, "foi atualizado")
+                } else {
+                    console.log("quantidade insuficiente")
+                }
+            }
+
+            adicionarAoEstoque(quantidade) {
+                this.#estoque += quantidade
+            }
+
+            #removerDoEstoque(quantidade) {
+                this.#estoque -= quantidade
+            }
+        }
+
+        const caneta = new Produto("caneta")
+        caneta.adicionarAoEstoque(10)
+        caneta.comprar(2)
+
+
+
+    </script>
+
+</body>
+
+</html>

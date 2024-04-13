@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arvores</title>
+</head>
+
+<body>
+    <h1>Árvores</h1>
+
+    <script>
+
+        class Node {
+            constructor(key) {
+                this.key = key
+                this.left = null
+                this.right = null
+            }
+        }
+
+        class BinarySearchTree {
+            constructor() {
+                this.root = null
+            }
+
+            insert(key) {
+                const newNode = new Node(key)
+                if (this.root === null) {
+                    this.root = newNode
+                } else {
+                    this.#insertNode(this.root, newNode)
+                }
+            }
+            #insertNode(node, newNode) {
+                if (newNode.key < node.key) {
+                    if (node.left === null) {
+                        node.left = newNode
+                    } else {
+                        this.#insertNode(node.left, newNode)
+                    }
+                } else if (newNode.key > node.key) {
+                    if (node.right === null) {
+                        node.right = newNode
+                    } else {
+                        this.#insertNode(node.right, newNode)
+                    }
+                }
+            }
+
+            search(key) {
+                return this.#searchNode(this.root, key)
+            }
+
+            #searchNode(node, key) {
+                if (node === null) {
+                    return false
+                }
+
+                if (key < node.key) {
+                    return this.#searchNode(node.left, key)
+                } else if (key > node.key) {
+                    return this.#searchNode(node.right, key)
+                } else {
+                    return true
+                }
+
+            }
+
+            remove(key) {
+                this.root = this.#removeNode(this.root, key)
+            }
+
+            #removeNode(node, key) {
+                if (node === null) {
+                    return null
+                }
+
+                if (key < node.key) {
+                    node.left = this.#removeNode(node.left, key)
+                    return node
+                } else if (key > node.key) {
+                    node.right = this.#removeNode(node.right, key)
+                    return node
+                } else {
+                    // nó folha
+                    if (node.left === null && node.right === null) {
+                        node = null
+                        return node
+                    }
+
+                    // nó com apenas 1 filho
+                    if (node.left === null) {
+                        node = node.right
+                        return node
+                    } else if (node.right === null) {
+                        node = node.left
+                        return node
+                    }
+
+                    //nó com 2 filhos
+                    const aux = this.#findMinNode(node.right)
+                    node.key = aux.key
+                    node.right = this.#removeNode(node.right, aux.key)
+                    return node
+
+
+
+                }
+
+            }
+
+            #findMinNode(node) {
+                while (node && node.left !== null) {
+                    node = node.left
+                }
+                return node
+            }
+
+            preOrderTraverse(callback) {
+                this.#preOrderTraverseNode(this.root, callback)
+            }
+
+            #preOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    callback(node.key)
+                    this.#preOrderTraverseNode(node.left, callback)
+                    this.#preOrderTraverseNode(node.right, callback)
+                }
+            }
+
+            inOrderTraverse(callback) {
+                this.#inOrderTraverseNode(this.root, callback)
+            }
+
+            #inOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    this.#inOrderTraverseNode(node.left, callback)
+                    callback(node.key)
+                    this.#inOrderTraverseNode(node.right, callback)
+                }
+            }
+
+            postOrderTraverse(callback) {
+                this.#postOrderTraverseNode(this.root, callback)
+            }
+
+            #postOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    this.#postOrderTraverseNode(node.left, callback)
+                    this.#postOrderTraverseNode(node.right, callback)
+                    callback(node.key)
+                }
+            }
+        }
+
+        const bst = new BinarySearchTree()
+        bst.insert(20)
+        bst.insert(15)
+        bst.insert(18)
+        bst.insert(15)
+        bst.insert(10)
+        bst.insert(25)
+
+        bst.postOrderTraverse(imprimir)
+
+        function imprimir(key) {
+            document.write("key: " + key + "<hr>")
+        }
+
+
+        // console.log("buscando o número 1", bst.search(1)) // false
+
+        // bst.remove(1)
+
+        // console.log(bst)
+
+        // bst.remove(10)
+        // bst.remove(25)
+        // bst.remove(20)
+        // console.log(bst)
+
+    </script>
+</body>
+
+</html>

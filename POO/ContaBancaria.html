@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+</head>
+
+<body>
+    <p>
+        Criar uma classe ContaBancaria que tenha uma propriedade privada para o saldo.
+        Utilizar getters e setters para acessar e atualizar o saldo. O saldo só pode ser atualizado através de depósitos
+        e saques, e não deve permitir que o saldo se torne negativo.
+        Implementar métodos para depósito (depositar(valor)) e saque (sacar(valor)), onde o saque só é permitido se
+        houver saldo suficiente.
+    </p>
+
+
+    <script>
+
+        class ContaBancaria {
+            #saldo // Propriedade privada
+
+            constructor(saldoInicial) {
+                this.#saldo = saldoInicial
+            }
+
+            get saldo() {
+                return `O saldo atual é de ${this.#saldo}`
+            }
+
+            set saldo(novoSaldo) {
+                console.log("O saldo só é acessível através do método sacar()")
+            }
+
+            depositar(valor) {
+                if (valor > 0) {
+                    this.#saldo += valor
+                    console.log("o valor de ", valor, "foi depositado com sucesso e agora o saldo é de", this.#saldo)
+                }
+
+            }
+
+            sacar(valor) {
+                if (valor > 0 && this.#saldo >= valor) {
+                    this.#saldo -= valor
+                    console.log("o valor de ", valor, "foi sacado com sucesso e agora o saldo é de", this.#saldo)
+                } else {
+                    console.log("Saldo insuficiente para realizar o saque de ", valor)
+                }
+
+            }
+
+
+        }
+
+        const minhaConta = new ContaBancaria(100)
+
+        minhaConta.saldo = 1000
+        minhaConta.sacar(50)
+        minhaConta.depositar(200)
+        minhaConta.sacar(300)
+        minhaConta.sacar(250)
+
+
+        console.log(minhaConta.saldo)
+
+        minhaConta.depositar(500)
+        console.log(minhaConta.saldo)
+
+
+    </script>
+
+</body>
+
+</html>
