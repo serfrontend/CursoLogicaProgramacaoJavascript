@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort</title>
+</head>
+
+<body>
+
+    <h1>Quick Sort</h1>
+
+    <script>
+
+        class QuickSort {
+            constructor(array) {
+                this.array = array
+            }
+
+            sort() {
+                this.quickSort(0, this.array.length - 1)
+                return this.array
+            }
+
+            quickSort(start, end) {
+                if (start < end) {
+                    let pivotIndex = this.partition(start, end)
+                    this.quickSort(start, pivotIndex - 1)
+                    this.quickSort(pivotIndex + 1, end)
+                }
+            }
+
+            partition(start, end) {
+                const midIndex = parseInt((start + end) / 2)
+                const pivotValue = this.array[midIndex]
+
+                let i = start
+                let j = end
+
+                while (i <= j) {
+                    while (this.array[i] < pivotValue) {
+                        i++
+                    }
+
+                    while (this.array[j] > pivotValue) {
+                        j--
+                    }
+
+                    if (i <= j) {
+                        this.swap(i, j)
+                        i++
+                        j--
+                    }
+                }
+                console.log("i: ", i, "j: ", j)
+                return i - 1
+            }
+
+
+            swap(i, j) {
+                const temp = this.array[i]
+                this.array[i] = this.array[j]
+                this.array[j] = temp
+            }
+
+
+        }
+
+        const numeros = [34, 7, 23, 32, 5, 62, 78, 43]
+        const sorter = new QuickSort(numeros)
+        console.log("Array Ordenado:", sorter.sort())
+
+
+    </script>
+
+</body>
+
+</html>
