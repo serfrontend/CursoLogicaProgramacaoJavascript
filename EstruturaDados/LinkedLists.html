@@ -117,9 +117,17 @@
                     if (current.value === value) {
                         if (prev) {
                             prev.next = current.next
+                            // Se o nó removido for o tail, atualiza o tail
+                            if (current === this.tail) {
+                                this.tail = prev;
+                            }
                             current.next = null
                         } else {
                             this.head = current.next
+                            // Se removemos o único elemento da lista, atualiza o tail
+                            if (current === this.tail) {
+                                this.tail = null;
+                            }
                             current.next = null
                         }
                         this.#size--
