@@ -212,9 +212,20 @@
 
             }
 
-            lastIndexOf() {
-                // método criado por alunos
+            lastIndexOf(value) {
+                let lastIndex = -1;
+                let current = this.head;
+                let index = 0;
+                while (current) {
+                    if (current.value === value) {
+                        lastIndex = index;
+                    }
+                    current = current.next;
+                    index++;
+                }
+                return lastIndex;
             }
+
 
             isEmpty() {
                 return this.head === null
